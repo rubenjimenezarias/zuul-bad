@@ -34,23 +34,27 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room JUNTA, SANTODOMINGO, GUZMAN, SANPEDRO, PLAZATOROS, LASTRA, MCDONAL;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        JUNTA = new Room("PARKING LA JUNTA");
+        SANTODOMINGO = new Room("PARKING DE SANTO DOMINGO");
+        GUZMAN = new Room("PARKING DE GUZMAN");
+        SANPEDRO = new Room("PARKING DE SAN PEDRO");
+        PLAZATOROS = new Room("PARKING DE LA PLAZA DE TOROS");
+        LASTRA = new Room("PARKING DE LA LASTRA");
+        MCDONAL = new Room("PARKING DEL MC DONALD");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        SANTODOMINGO.setExits(SANPEDRO, PLAZATOROS, GUZMAN, JUNTA);
+        JUNTA.setExits(null, SANTODOMINGO, null, null);
+        SANPEDRO.setExits(null, null, SANTODOMINGO, null);
+        GUZMAN.setExits(SANTODOMINGO, null, null, null);
+        LASTRA.setExits(null, null, PLAZATOROS, null);
+        PLAZATOROS.setExits(LASTRA, null, MCDONAL, SANTODOMINGO);
+        MCDONAL.setExits(PLAZATOROS, null, null, null);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = SANTODOMINGO;  // start game outside
     }
 
     /**

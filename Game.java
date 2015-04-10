@@ -46,13 +46,13 @@ public class Game
         MCDONALD = new Room("PARKING DEL MC DONALD");
         
         // initialise room exits
-        SANTODOMINGO.setExits(SANPEDRO, PLAZATOROS, null, JUNTA, GUZMAN);
-        JUNTA.setExits(null, SANTODOMINGO, null, null, null);
-        SANPEDRO.setExits(null, null, SANTODOMINGO, null, null);
-        GUZMAN.setExits(SANTODOMINGO, null, null, null, null);
-        LASTRA.setExits(null, null, PLAZATOROS, null, null);
-        PLAZATOROS.setExits(LASTRA, null, null, SANTODOMINGO, MCDONALD);
-        MCDONALD.setExits(PLAZATOROS, null, null, null, null);
+        SANTODOMINGO.setExits(SANPEDRO, PLAZATOROS, null, JUNTA, GUZMAN, null);
+        JUNTA.setExits(null, SANTODOMINGO, null, null, null, null);
+        SANPEDRO.setExits(null, null, SANTODOMINGO, null, null, null);
+        GUZMAN.setExits(null, null, null, null, null, SANTODOMINGO);
+        LASTRA.setExits(null, null, PLAZATOROS, null, null, null);
+        PLAZATOROS.setExits(LASTRA, null, null, SANTODOMINGO, MCDONALD, null);
+        MCDONALD.setExits(null, null, null, null, null, PLAZATOROS);
 
         currentRoom = SANTODOMINGO;  // start game outside
     }

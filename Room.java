@@ -61,12 +61,22 @@ public class Room
     * @ return A description of the available exits.
     */
     public String getExitString(){
-        String informacion = "-- Exits: ";
+        String informacion = "/--/ Exits: ";
         Iterator it = exits.keySet().iterator();
         while (it.hasNext()) {
             informacion += it.next() + " ";
         }
         return informacion;
+    }
+    
+    /**
+    * Return a long description of this room, of the form:
+    *     You are in the 'name of room'
+    *     Exits: north west southwest
+    * @return A description of the room, including exits.
+    */
+    public String getLongDescription(){
+        return "You are in " + description + " " + getExitString();       
     }
     
 }

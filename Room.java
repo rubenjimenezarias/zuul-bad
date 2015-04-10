@@ -14,12 +14,12 @@
  */
 public class Room 
 {
-    public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
-    public Room southeastExit;
+    private String description;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
+    private Room southeastExit;
 
     /**
      * Create a room described "description". Initially, it has
@@ -61,5 +61,25 @@ public class Room
     {
         return description;
     }
-
+    
+    /**
+     * Devuelve las salidas
+     */
+    public Room getExit(String direccion)
+    {
+        Room devolver = null;
+        switch (direccion){
+            case "north": devolver = northExit;
+            break;
+            case "south": devolver = southExit;
+            break;
+            case "east": devolver = eastExit;
+            break;
+            case "west": devolver = westExit;
+            break;
+            case "southeast": devolver = southeastExit;
+            break;
+        }
+        return devolver;
+    }
 }

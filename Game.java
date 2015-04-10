@@ -180,22 +180,8 @@ public class Game
     {
         System.out.println();
         System.out.println("You are " + currentRoom.getDescription());
-        System.out.print("Exits: ");
-        if(currentRoom.getExit("north") != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.getExit("east") != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.getExit("south") != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.getExit("west") != null) {
-            System.out.print("west ");
-        }
-        if(currentRoom.getExit("southeast") != null) {
-            System.out.print("southeast ");
-        }
+        System.out.print(currentRoom.getExitString());
+        
         System.out.println();
     }
 }

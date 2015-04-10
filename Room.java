@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Iterator;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -15,12 +17,7 @@
 public class Room 
 {
     private String description;
-    private Room northExit;
-    private Room southExit;
-    private Room eastExit;
-    private Room westExit;
-    private Room southeastExit;
-    private Room northwestExit;
+    private HashMap <String,Room> exits;
 
     /**
      * Create a room described "description". Initially, it has
@@ -31,6 +28,7 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
+        exits = new HashMap<>();
     }
 
     /**
@@ -44,17 +42,17 @@ public class Room
     public void setExits(Room north, Room east, Room south, Room west, Room southeast, Room northwest) 
     {
         if(north != null)
-            northExit = north;
+            exits.put("north", north);
         if(east != null)
-            eastExit = east;
+            exits.put("east", east);
         if(south != null)
-            southExit = south;
+            exits.put("south", south);
         if(west != null)
-            westExit = west;
+            exits.put("west", west);
         if(southeast != null)
-            southeastExit = southeast;
+            exits.put("southeast", southeast);
         if(northwest != null)
-            northwestExit = northwest;
+            exits.put("northwest", northwest);
     }
 
     /**
@@ -70,22 +68,7 @@ public class Room
      */
     public Room getExit(String direccion)
     {
-        Room devolver = null;
-        switch (direccion){
-            case "north": devolver = northExit;
-            break;
-            case "south": devolver = southExit;
-            break;
-            case "east": devolver = eastExit;
-            break;
-            case "west": devolver = westExit;
-            break;
-            case "southeast": devolver = southeastExit;
-            break;
-            case "northwest": devolver = northwestExit;
-            break;
-        }
-        return devolver;
+        return exits.get(direccion);
     }
     /**
     * Return a description of the room's exits.
@@ -95,23 +78,9 @@ public class Room
     */
     public String getExitString(){
         String informacion = "-- Exits: ";
-        if(northExit != null) {
-            informacion += "north ";
-        }
-        if(southExit != null) {
-            informacion += "south ";
-        }
-        if(westExit != null) {
-            informacion += "west ";
-        }
-        if(eastExit != null) {
-            informacion += "east ";
-        }
-        if(southeastExit != null) {
-            informacion += "southeast ";
-        }
-        if(northwestExit != null) {
-            informacion += "northwest ";
+        Iterator it = exits.keySet().iterator();
+        while (it.hasNext()) {
+            informacion += it.next() + " ";
         }
         return informacion;
     }

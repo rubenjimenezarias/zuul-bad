@@ -194,6 +194,7 @@ public class Game
     {
         System.out.println("---");
         System.out.println(currentRoom.getLongDescription());
+        parser.getCommandWords().showAll();
         System.out.println("---");
     }
 }

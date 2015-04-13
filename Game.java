@@ -37,13 +37,13 @@ public class Game
         Room JUNTA, SANTODOMINGO, GUZMAN, SANPEDRO, PLAZATOROS, LASTRA, MCDONALD;
       
         // create the rooms
-        JUNTA = new Room("PARKING LA JUNTA");
-        SANTODOMINGO = new Room("PARKING DE SANTO DOMINGO");
-        GUZMAN = new Room("PARKING DE GUZMAN");
-        SANPEDRO = new Room("PARKING DE SAN PEDRO");
-        PLAZATOROS = new Room("PARKING DE LA PLAZA DE TOROS");
-        LASTRA = new Room("PARKING DE LA LASTRA");
-        MCDONALD = new Room("PARKING DEL MC DONALD");
+        JUNTA = new Room("PARKING LA JUNTA","cuchillo",150);
+        SANTODOMINGO = new Room("PARKING DE SANTO DOMINGO","tenedor",100);
+        GUZMAN = new Room("PARKING DE GUZMAN","cuchara", 150);
+        SANPEDRO = new Room("PARKING DE SAN PEDRO","bota",150);
+        PLAZATOROS = new Room("PARKING DE LA PLAZA DE TOROS","reloj",150);
+        LASTRA = new Room("PARKING DE LA LASTRA","pulsera",200);
+        MCDONALD = new Room("PARKING DEL MC DONALD","hamburguesa",200);
         
         // initialise room exits
         SANTODOMINGO.setExit("north",SANPEDRO);

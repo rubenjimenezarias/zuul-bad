@@ -18,6 +18,9 @@ public class Room
 {
     private String description;
     private HashMap <String,Room> exits;
+    
+    private String objeto;
+    private int peso;
 
     /**
      * Create a room described "description". Initially, it has
@@ -25,11 +28,14 @@ public class Room
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description) 
+    public Room(String description,String objeto, int peso) 
     {
         this.description = description;
         exits = new HashMap<>();
+        this.objeto = objeto;
+        this.peso = peso;
     }
+    
     /**
     * Define an exit from this room.
     * @param direction The direction of the exit.
@@ -54,6 +60,7 @@ public class Room
     {
         return exits.get(direccion);
     }
+    
     /**
     * Return a description of the room's exits.
     * For example: "Exits: north east west"
@@ -76,7 +83,9 @@ public class Room
     * @return A description of the room, including exits.
     */
     public String getLongDescription(){
-        return "You are in " + description + " " + getExitString();       
+        return "You are in " + description + 
+               " Hay un objeto " + objeto + " que pesa " + peso + 
+               " " + getExitString();       
     }
     
 }

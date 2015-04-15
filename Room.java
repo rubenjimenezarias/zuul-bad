@@ -21,9 +21,6 @@ public class Room
     private String description;
     private HashMap <String,Room> exits;
     
-    private String objeto;
-    private int peso;
-    
     private ArrayList<Objeto> objetos;
 
     /**
@@ -36,8 +33,6 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
-        this.objeto = objeto;
-        this.peso = peso;
         objetos = new ArrayList<>();
     }
     

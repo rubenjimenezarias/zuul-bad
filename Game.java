@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -19,7 +21,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Room previousRoom;
+    private Stack<Room> camino;
         
     /**
      * Create the game and initialise its internal map.
@@ -28,6 +30,9 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        camino = new Stack<Room>();
+        camino.push(currentRoom);
+        
     }
 
     /**
@@ -36,7 +41,7 @@ public class Game
     private void createRooms()
     {
         Room JUNTA, SANTODOMINGO, GUZMAN, SANPEDRO, PLAZATOROS, LASTRA, MCDONALD;
-      
+         
         // create the rooms
         JUNTA = new Room("PARKING LA JUNTA","cuchillo",150);
         SANTODOMINGO = new Room("PARKING DE SANTO DOMINGO","tenedor",100);
@@ -67,7 +72,8 @@ public class Game
         LASTRA.setExit("south",PLAZATOROS);
 
         currentRoom = SANTODOMINGO;  // start game outside
-        previousRoom = SANTODOMINGO;
+        
+        
         // introducimos objetos en las habitaciones
         SANTODOMINGO.addObjeto("Pelota", 2);
         SANTODOMINGO.addObjeto("Guantes",0.5);
@@ -135,7 +141,13 @@ public class Game
             System.out.println("You have eaten now and you are not hungry any more.");
         }
         else if (commandWord.equals("back")){
-            currentRoom = previousRoom;
+            if (camino.empty()){
+                camino.push(currentRoom);
+            }
+            else
+            {
+                currentRoom = camino.pop();
+            }
             printLocationInfo();
         }
 
@@ -179,9 +191,8 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
-            previousRoom = currentRoom;
-            currentRoom = nextRoom;
-            
+            camino.push(currentRoom);
+            currentRoom = nextRoom;            
             printLocationInfo();
         }
     }

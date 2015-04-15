@@ -66,6 +66,11 @@ public class Game
         LASTRA.setExit("south",PLAZATOROS);
 
         currentRoom = SANTODOMINGO;  // start game outside
+        
+        // introducimos objetos en las habitaciones
+        SANTODOMINGO.addObjeto("Pelota", 2);
+        SANTODOMINGO.addObjeto("Guantes",0.5);
+        GUZMAN.addObjeto("Botella",1);
     }
 
     /**
@@ -145,7 +150,7 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        parser.printAllCommands();
     }
 
     /** 

@@ -15,11 +15,11 @@ public class Player
     /**
      * Constructor for objects of class Player
      */
-    public Player(Room room)
+    public Player()
     {
         // initialise instance variables
         camino = new Stack<Room>();
-        currentRoom = room;
+        currentRoom = null;
         
     }
     
@@ -38,7 +38,22 @@ public class Player
      */
     public void deleteRoom()
     {
-        camino.pop();
+        if (caminoVacio()){
+            System.out.println("No hay mas caminos atras");
+        }
+        else
+        {
+            currentRoom = camino.pop();
+        }
+        printLocationInfo();
+    }
+    
+    /**
+     * cambiar current room
+     */
+    public void setCurrentRoom(Room room)
+    {
+        currentRoom = room;
     }
     
     /**

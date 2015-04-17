@@ -28,6 +28,7 @@ public class Game
      */
     public Game() 
     {
+        player = new Player();
         createRooms();
         parser = new Parser();
     }
@@ -67,14 +68,12 @@ public class Game
         MCDONALD.setExit("northwest",PLAZATOROS);
         
         LASTRA.setExit("south",PLAZATOROS);
-        
-        
+        //asignamos el comienzo del camino
+        player.setCurrentRoom(SANTODOMINGO);
         // introducimos objetos en las habitaciones
         SANTODOMINGO.addObjeto("Pelota", 2);
         SANTODOMINGO.addObjeto("Guantes",0.5);
         GUZMAN.addObjeto("Botella",1);
-        // creamos el jugador
-         player = new Player(SANTODOMINGO);
         
     }
 
@@ -152,14 +151,7 @@ public class Game
             System.out.println("You have eaten now and you are not hungry any more.");
         }
         else if (commandWord.equals("back")){
-            if (player.caminoVacio()){
-                System.out.println("No hay mas caminos atras");
-            }
-            else
-            {
-                player.deleteRoom();
-            }
-            player.printLocationInfo();
+            player.deleteRoom();
         }
 
         return wantToQuit;

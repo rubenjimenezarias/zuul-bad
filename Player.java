@@ -36,7 +36,7 @@ public class Player
     /**
      * Borra la ultima habitacion si volvemos con back
      */
-    public void deleteRoom()
+    public void goBack()
     {
         if (caminoVacio()){
             System.out.println("No hay mas caminos atras");

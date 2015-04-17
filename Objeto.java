@@ -22,6 +22,7 @@ public class Objeto
         this.descripcion = descripcion;
         this.peso = peso;
     }
+    
     /**
      * Devuelve la infomracion completa del objeto en un String
      * @return Informacion

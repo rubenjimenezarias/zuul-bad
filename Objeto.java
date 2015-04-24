@@ -31,4 +31,20 @@ public class Objeto
     {
         return descripcion + " " + peso + " kg\n";
     }
+    
+    /**
+     * Deuvleve la descripcion del objeto en un string.
+     */
+    public String descripcion()
+    {
+        return descripcion;
+    }
+    
+    /**
+     * Devuelve el peso del objeto
+     */
+    public double peso()
+    {
+        return peso;
+    }
 }

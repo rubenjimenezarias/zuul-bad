@@ -70,7 +70,8 @@ public class Game
         LASTRA.setExit("south",PLAZATOROS);
         //asignamos el comienzo del camino
         player.setCurrentRoom(SANTODOMINGO);
-        // introducimos objetos en las habitaciones
+        
+        //introducimos objetos en las habitaciones
         SANTODOMINGO.addObjeto("Pelota", 2);
         SANTODOMINGO.addObjeto("Guantes",0.5);
         GUZMAN.addObjeto("Botella",1);
@@ -104,6 +105,7 @@ public class Game
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
+        player.printLocationInfo();
     }
     
      /**
@@ -134,24 +136,33 @@ public class Game
             return false;
         }
 
-        String commandWord = command.getCommandWord();
-        if (commandWord.equals("help")) {
+        Option commandWord = command.getCommandWord();
+        if (commandWord == Option.HELP) {
             printHelp();
         }
-        else if (commandWord.equals("go")) {
+        else if (commandWord == Option.GO) {
             player.goRoom(command);
         }
-        else if (commandWord.equals("quit")) {
+        else if (commandWord == Option.QUIT) {
             wantToQuit = quit(command);
         }
-        else if (commandWord.equals("look")) {
+        else if (commandWord == Option.LOOK) {
             player.printLocationInfo();
         }
-        else if (commandWord.equals("eat")) {
+        else if (commandWord == Option.EAT) {
             System.out.println("You have eaten now and you are not hungry any more.");
         }
-        else if (commandWord.equals("back")){
+        else if (commandWord == Option.BACK){
             player.goBack();
+        }
+        else if (commandWord == Option.TAKE){
+            player.addObjeto(command);
+        }
+        else if (commandWord == Option.DROP){
+            player.dropObjeto(command);
+        }
+        else {
+            commandWord = Option.UNKNOWN; 
         }
 
         return wantToQuit;

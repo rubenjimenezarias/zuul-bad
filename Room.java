@@ -91,11 +91,19 @@ public class Room
     }
     
     /**
-     * Añadimos un objeto a la habitacion.
+     * Añadimos un objeto a la habitacion.(Para empezar el juego)
      */
     public void addObjeto(String descripcion,double peso)
     {
         objetos.add(new Objeto(descripcion, peso));
+    }
+    
+    /**
+     * Dejamos un objeto a la habitacion.(En el transcurso del juego)
+     */
+    public void dejaObjeto(Objeto objeto)
+    {
+        objetos.add(objeto);
     }
     
     /**
@@ -115,5 +123,43 @@ public class Room
             }
         }
         return listaObjetos;
+    }
+    
+    /**
+     * Comprobar si un objeto pasado por parametro en la habitacion
+     */
+    public Objeto getObject(String descripcion)
+    {
+        Objeto objeto = null;
+        boolean encontrado = false;
+        int cont = 0;
+        while (!encontrado && cont < objetos.size())
+        {
+            if (objetos.get(cont).descripcion() == descripcion)
+            {
+                objeto = objetos.get(cont);
+                encontrado = true;
+            }
+            cont ++;
+        }
+        return objeto;
+    }
+    
+    /**
+     * Comprobar si un objeto pasado por parametro en la habitacion
+     */
+    public void deleteObject(String descripcion)
+    {
+        boolean borrado = false;
+        int cont = 0;
+        while (!borrado && cont < objetos.size())
+        {
+            if (objetos.get(cont).descripcion() == descripcion)
+            {
+                objetos.remove(cont);
+                borrado = true;
+            }
+            cont ++;
+        }
     }
 }

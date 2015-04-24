@@ -70,7 +70,8 @@ public class Game
         LASTRA.setExit("south",PLAZATOROS);
         //asignamos el comienzo del camino
         player.setCurrentRoom(SANTODOMINGO);
-        // introducimos objetos en las habitaciones
+        
+        //introducimos objetos en las habitaciones
         SANTODOMINGO.addObjeto("Pelota", 2);
         SANTODOMINGO.addObjeto("Guantes",0.5);
         GUZMAN.addObjeto("Botella",1);
@@ -104,6 +105,7 @@ public class Game
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
+        player.printLocationInfo();
     }
     
      /**
@@ -152,6 +154,12 @@ public class Game
         }
         else if (commandWord.equals("back")){
             player.goBack();
+        }
+        else if (commandWord.equals("take")){
+            player.addObjeto(command);
+        }
+        else if (commandWord.equals("drop")){
+            player.dropObjeto(command);
         }
 
         return wantToQuit;

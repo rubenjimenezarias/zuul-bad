@@ -24,7 +24,7 @@ public class WorldOfZuul
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public static void main()
+    public static void main(String[] args)
     {
         // put your code here
         game.play();

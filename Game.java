@@ -104,7 +104,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Type '" + Option.HELP.getComando() + "' if you need help.");
         player.printLocationInfo();
     }
     
@@ -137,32 +137,33 @@ public class Game
         }
 
         Option commandWord = command.getCommandWord();
-        if (commandWord == Option.HELP) {
-            printHelp();
-        }
-        else if (commandWord == Option.GO) {
-            player.goRoom(command);
-        }
-        else if (commandWord == Option.QUIT) {
-            wantToQuit = quit(command);
-        }
-        else if (commandWord == Option.LOOK) {
-            player.printLocationInfo();
-        }
-        else if (commandWord == Option.EAT) {
-            System.out.println("You have eaten now and you are not hungry any more.");
-        }
-        else if (commandWord == Option.BACK){
-            player.goBack();
-        }
-        else if (commandWord == Option.TAKE){
-            player.addObjeto(command);
-        }
-        else if (commandWord == Option.DROP){
-            player.dropObjeto(command);
-        }
-        else {
-            commandWord = Option.UNKNOWN; 
+        switch (commandWord){
+            case HELP : printHelp();
+            break;
+            
+            case GO : player.goRoom(command);
+            break;
+            
+            case QUIT : player.goRoom(command);
+            break;
+            
+            case LOOK : player.printLocationInfo();
+            break;
+            
+            case EAT : System.out.println("You have eaten now and you are not hungry any more.");
+            break;
+            
+            case BACK : player.goBack();
+            break;
+            
+            case TAKE : player.addObjeto(command);
+            break;
+            
+            case DROP : player.dropObjeto(command);
+            break;
+            
+            case UNKNOWN : commandWord = Option.UNKNOWN;
+            break;
         }
 
         return wantToQuit;

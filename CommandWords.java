@@ -22,23 +22,10 @@ public class CommandWords
     public CommandWords()
     {
         validCommands = new HashMap<>();
-        validCommands.put("go",Option.GO);
-        validCommands.put("ir",Option.GO);
-        validCommands.put("quit",Option.QUIT);
-        validCommands.put("salir",Option.QUIT);
-        validCommands.put("help",Option.HELP);
-        validCommands.put("ayuda",Option.HELP);
-        validCommands.put("look",Option.LOOK);
-        validCommands.put("mirar",Option.LOOK);
-        validCommands.put("eat",Option.EAT);
-        validCommands.put("comer",Option.EAT);
-        validCommands.put("back",Option.BACK);
-        validCommands.put("volver",Option.BACK);
-        validCommands.put("take",Option.TAKE);
-        validCommands.put("coger",Option.TAKE);
-        validCommands.put("drop",Option.DROP);
-        validCommands.put("dejar",Option.DROP);
-        validCommands.put("unknown",Option.UNKNOWN);
+        for(Option opcion: Option.values())
+        {
+            validCommands.put(opcion.getComando(),opcion);
+        }
         
     }
 
@@ -49,10 +36,6 @@ public class CommandWords
      */
     public boolean isCommand(String aString)
     {
-        for(int i = 0; i < validCommands.size(); i++) {
-            if(validCommands.containsKey(aString))
-                return true;
-        }
         // if we get here, the string was not found in the commands
         return validCommands.containsKey(aString);
     }
@@ -62,7 +45,10 @@ public class CommandWords
      */
     public void showAll()
     {
-        System.out.println(validCommands.keySet());
+        for (String command : validCommands.keySet())
+        {
+            System.out.println(command);
+        }
     }
     
     /**
